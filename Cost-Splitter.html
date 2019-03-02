@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Cost Splitter</title>
+        <script>
+            function calculate(){
+                var totalBill=document.getElementById("bill").value;
+                var tipPercentage=document.getElementById("tip").value;
+                var noOfPeople=document.getElementById("people").value;
+                if(noOfPeople==0 || noOfPeople.toString().length<1 || totalBill<0 || tipPercentage<0){
+                    
+                   if(noOfPeople==0 || noOfPeople.toString().length<1){
+                       alert("No people can not be zero or empty");
+                   } 
+                   if(totalBill<0){
+                       alert("Total Bill can not be negative");
+                   }
+                    if(tipPercentage<0){
+                        alert("Tip percentage can not be nagetive");
+                    }
+                    document.getElementById("tip-per-person").innerHTML=0;
+                    document.getElementById("total-per-person").innerHTML=0;
+                }
+                else{
+                    var tip=(totalBill*tipPercentage)/100;
+                    var tipPerPerson= (tip/noOfPeople);
+                    var total=Number(tip)+Number(totalBill);
+                    var totalPerPerson=(total)/noOfPeople;
+                    var tipPerPerson= tipPerPerson.toString() + " $";
+                    var totalPerPerson = totalPerPerson.toString()+" $";
+                    document.getElementById("tip-per-person").innerHTML=tipPerPerson;
+                    document.getElementById("total-per-person").innerHTML=totalPerPerson;
+                }
+            }
+        </script>
+        <style>
+            .leftdiv{
+                width:30%;
+                height: 400px;
+                float:left; 
+            }
+            .rightdiv{
+                width:40%;
+                height:400px;
+             float:left;
+            }
+            .ibox{
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid #FF0000;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 style="padding-left: 200px">Tip Calculator</h2>
+        <div class="leftdiv" >
+            <h4>Total Bill</h4>
+            <input type="number" id="bill" value="1" min="0" class="ibox" oninput="calculate()"/>
+            <h4>Tip in percentage</h4>
+            <input type="number" id="tip" value="1" min="0" class="ibox" oninput="calculate()"/>
+            <h4>Number of people</h4>
+            <input type="number" id="people" value="1" min="1" class="ibox" oninput="calculate()"/>
+        </div>
+        <div class="rightdiv">
+            <h4>Tip per person</h4>
+            <p id="tip-per-person" ></p><br/><br/>
+            <h4>Total per person</h4>
+            <p id="total-per-person"></p>
+            
+        </div>
+    </body>
+</html>
