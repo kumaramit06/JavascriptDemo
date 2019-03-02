@@ -1,0 +1,35 @@
+<html>
+    <title>Temperature Converter</title>
+    <script>
+        function ToCelcius(){
+            var f=document.getElementById("Fahrenheit").value; //getting fahrenheit value
+            //if the input field is not blank 
+            if(f.toString().length>0){
+            var c= (f-32)*(5/9);
+            document.getElementById("Celsius").value=c;
+            }
+            else{
+                document.getElementById("Celsius").value="";
+            }
+            
+        }
+        function ToFarenhite(){
+            var c=document.getElementById("Celsius").value; //getting celsius value
+            //if the input field is not blank
+           if(c.toString().length>0){
+            var f= ((9*c)/5)+32;
+            document.getElementById("Fahrenheit").value=f;
+           }
+            else{
+                document.getElementById("Fahrenheit").value="";
+            }
+        }
+    </script>
+    <body>
+        <h1>Temperature Converter</h1><br/><br/>
+        <pre>
+        <input type="number" id="Fahrenheit" oninput="ToCelcius()">   <span style='font-size:30px;'>&#8644;</span>   <input type="number" id="Celsius" oninput="ToFarenhite()"> 
+        <h2>      Fahrenheit              Celsius</h2>
+        </pre>
+    </body>
+</html>
